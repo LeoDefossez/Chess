@@ -3,17 +3,23 @@
 # Liste des classes et utilité 
 ## Points important : 
 
+- Une très petite partie du code est tester: certaines sous classes de MyPiece et quelques méthodes de MyFENParser
+- Un certain nombre de méthode appelées ne sont pas implémentée, et un certain nombre de méthodes ne sont jamais appelées.
 - MyChessBoard, MyChessGame, MyChessSquare sont des éléments graphiques étandant BLElement.
 
 
 ## MyChessBoard
-C'est une classe qui contient l'ensemble de nos cases (Square)
+C'est une classe qui contient l'ensemble de nos cases (Square).
+
+Nous avons pu remarqué l'utilisation d'un pattern de state, entre MyChessBoard et MySelectedState/MyUnselectedState, pour définir si un square est séléctionner et lequel.
 
 ## MyChessGame
 C'est une classe qui gère le jeux et ses éléments. 
 
 ## MyChessSquare
 C'est une classe qui gère chacune des cases. 
+
+Nous avons pu remarqué l'utilisation d'un visiteur entre MyChessSquare et MyPiece, avec la méthode renderPieceOn:.
 
 
 ## MyPiece
@@ -38,5 +44,14 @@ C'est la classe qui sera utilisée lorsqu'aucune case n'est selectionnée.
 
 Méthode click-on utilisé dès qu'on click sur un Square via un event-handler initialiser sur le square.
 
+## MyFENGame
+Cette classe offre une configuration par défault pour l'initialisation du object MyChessGame.
 
+## MyFENParser
+Cette classe permet de parser une chaine de caractères pour en créer un object MyFENGame.
 
+## MyPGNParser
+Cette classe n'est jamais référencée dans le code. Mais elle semble être utile pour l'historique des coup jouées.
+
+## MyPGNTag
+Cette classe semble être une classe utilitaire pour MyPGNParser.
