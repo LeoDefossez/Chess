@@ -1,8 +1,16 @@
 # Compte rendu sur le projet Chess
 
 # Liste des classes et utilité 
-## Points important : 
 
+## Seuls documentations: Points d'entrées
+1) un point d'entrée dans le commentaire de classe de MyChessGame
+2) Point d'entrées pour MyFENParser et MyPNGPaser
+
+## Classes clées:
+- MyChessGame (Pour le jeu)
+- BlSpace (Pour l'affichage)
+
+## Points important : 
 - Une très petite partie du code est tester: certaines sous classes de MyPiece et quelques méthodes de MyFENParser
 - Un certain nombre de méthode appelées ne sont pas implémentée, et un certain nombre de méthodes ne sont jamais appelées.
 - MyChessBoard, MyChessGame, MyChessSquare sont des éléments graphiques étandant BLElement.
