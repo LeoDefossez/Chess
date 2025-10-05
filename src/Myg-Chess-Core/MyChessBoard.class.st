@@ -36,13 +36,12 @@ MyChessBoard class >> new [
 
 { #category : 'accessing' }
 MyChessBoard >> at: coordinate [
-
 	^ grid at: coordinate ifAbsent: nil
 ]
 
 { #category : 'accessing' }
 MyChessBoard >> at: aString ifAbsent: aFullBlockClosure [
-
+	
 	^ grid at: aString ifAbsent: aFullBlockClosure
 ]
 

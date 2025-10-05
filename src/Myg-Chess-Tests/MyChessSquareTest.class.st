@@ -1,0 +1,16 @@
+Class {
+	#name : 'MyChessSquareTest',
+	#superclass : 'TestCase',
+	#category : 'Myg-Chess-Tests',
+	#package : 'Myg-Chess-Tests'
+}
+
+{ #category : 'tests' }
+MyChessSquareTest >> testMethodPlusShouldTheNextCase [
+	"The method should return the next neighbourough, or nil if no neighbourgh"
+	|board square|
+	
+	board := MyChessBoard empty.
+	square := board at: 'e5'.
+	self assert: (square + (2@3)) name equals: 'g8' 
+]
