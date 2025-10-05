@@ -12,7 +12,8 @@ MyChessSquareTest >> testPlusGiveANil [
 	
 	board := MyChessBoard empty.
 	square := board at: 'e5'.
-	self assert: (square + (10@10)) equals: nil 
+	"self assert: (square + (10@10)) equals: MyNilChessSquare new"
+	self assert: (square + (10@10)) = MyNilChessSquare new.
 ]
 
 { #category : 'tests' }
