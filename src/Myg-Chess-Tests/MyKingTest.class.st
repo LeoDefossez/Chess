@@ -72,7 +72,7 @@ MyKingTest >> testIsNotCheckBySameColorRook [
 ]
 
 { #category : 'tests' }
-MyKingTest >> testTargetSquaresLegalCheck6Position [
+MyKingTest >> testTargetSquaresLegalCheck6GoodPositionAnd2Wrong [
 
 	| king board |
 	board := MyChessBoard empty.
