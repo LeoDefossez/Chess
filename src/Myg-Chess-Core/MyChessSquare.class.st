@@ -45,6 +45,12 @@ MyChessSquare >> + aPoint [
 	^ board at: column , file
 ]
 
+{ #category : 'as yet unclassified' }
+MyChessSquare >> addTo: aCollection [ 
+	
+	^ aCollection add: self; yourself
+]
+
 { #category : 'accessing' }
 MyChessSquare >> board [
 	^ board
