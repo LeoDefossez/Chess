@@ -12,18 +12,19 @@ MyNilChessSquare >> = anObject [
 ]
 
 { #category : 'accessing' }
-MyNilChessSquare >> ifNil: nilBlock [ 
-	^ nilBlock value
-]
-
-{ #category : 'accessing' }
 MyNilChessSquare >> ifNil: nilBlock ifNotNil: ifNotNilBlock [
 	^ nilBlock value
 ]
 
 { #category : 'accessing' }
-MyNilChessSquare >> ifNotNil: aBlock [ 
+MyNilChessSquare >> ifNotNil: aBlock [
+
 	^ self
+]
+
+{ #category : 'accessing' }
+MyNilChessSquare >> isNil [
+	^true
 ]
 
 { #category : 'accessing' }

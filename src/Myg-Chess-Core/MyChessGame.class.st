@@ -49,13 +49,6 @@ MyChessGame class >> new [
 	self error: 'Please use one of the other constructors'
 ]
 
-{ #category : 'playing' }
-MyChessGame >> checkForMate [
-
-	whitePlayer king isCheckMated ifTrue: [ self halt: 'Black wins!' ].
-	blackPlayer king isCheckMated ifTrue: [ self halt: 'White wins!' ].
-]
-
 { #category : 'initialization' }
 MyChessGame >> initialize [
 
