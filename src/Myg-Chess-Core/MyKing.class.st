@@ -82,8 +82,6 @@ MyKing >> targetSquaresLegal: aBoolean [
 
 	| threatenedSquares |
 	threatenedSquares := self opponentPieces flatCollect: [ :e | e attackingSquares ].
-	^ self basicTargetSquares select: [ :s |
-			  (threatenedSquares includes: s) not and: [
-					  s hasPiece not or: [ "The square has an opponent piece"
-						  s contents color ~= color and: [ "Let's hope the piece is not defended" threatenedSquares includes: s ] ] ] ]
+	^ self basicTargetSquares select: [ :s | "Either the square is empty and not threatened or the square has an opponent piece and not threatened"
+		  (threatenedSquares includes: s) not and: [ s hasPiece not or: [ s contents color ~= color ] ] ]
 ]
