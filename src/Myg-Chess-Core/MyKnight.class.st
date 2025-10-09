@@ -25,7 +25,6 @@ MyKnight >> targetSquaresLegal: aBoolean [
 		  (square right ifNotNil: [ :p | p right ifNotNil: #down ]).
 		  (square left ifNotNil: [ :p | p left ifNotNil: #up ]).
 		  (square left ifNotNil: [ :p | p left ifNotNil: #down ]).
-		self halt.
 		  (square up ifNotNil: [ :p | p up ifNotNil: #left ]).
 		  (square up ifNotNil: [ :p | p up ifNotNil: #right ]).
 		  (square down ifNotNil: [ :p | p down ifNotNil: #left ]).

@@ -12,13 +12,25 @@ MyNilChessSquare >> = anObject [
 ]
 
 { #category : 'accessing' }
+MyNilChessSquare >> addTo: aCollection [
+
+	^ aCollection
+]
+
+{ #category : 'accessing' }
+MyNilChessSquare >> down [
+
+	^ self
+]
+
+{ #category : 'accessing' }
 MyNilChessSquare >> ifNil: nilBlock ifNotNil: ifNotNilBlock [
+
 	^ nilBlock value
 ]
 
 { #category : 'accessing' }
 MyNilChessSquare >> ifNotNil: aBlock [
-
 	^ self
 ]
 
@@ -28,7 +40,25 @@ MyNilChessSquare >> isNil [
 ]
 
 { #category : 'accessing' }
+MyNilChessSquare >> left [
+
+	^ self
+]
+
+{ #category : 'accessing' }
 MyNilChessSquare >> notNil [
 
 	^ false
+]
+
+{ #category : 'accessing' }
+MyNilChessSquare >> right [
+
+	^ self
+]
+
+{ #category : 'accessing' }
+MyNilChessSquare >> up [
+
+	^ self
 ]

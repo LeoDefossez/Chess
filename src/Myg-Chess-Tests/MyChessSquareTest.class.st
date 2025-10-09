@@ -6,6 +6,11 @@ Class {
 }
 
 { #category : 'tests' }
+MyChessSquareTest >> testAddTo [
+	self assert: (MyChessSquare new addTo: OrderedCollection new) size equals: 1
+]
+
+{ #category : 'tests' }
 MyChessSquareTest >> testPlusGiveANil [
 	"The method should return the next neighbourough, or nil if no neighbourgh"
 	|board square|
