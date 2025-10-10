@@ -6,17 +6,12 @@ Class {
 }
 
 { #category : 'initialization' }
-MyPawnWhite >> initialize [ 
-	"comment stating purpose of instance-side method"
-	"scope: class-variables  &  instance-variables"
-
+MyPawnWhite >> initialize [
+	super initialize.
 	color:= Color white 
 ]
 
 { #category : 'as yet unclassified' }
-MyPawnWhite >> nextMoveAhead [ 
-	"comment stating purpose of instance-side method"
-	"scope: class-variables  &  instance-variables"
-
-	^ square up
+MyPawnWhite >> nextMoveAhead:aSquare [
+	^ aSquare up.
 ]

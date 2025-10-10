@@ -55,6 +55,14 @@ MyPawn >> nextMoveAhead [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"
 
+	^self nextMoveAhead: square 
+]
+
+{ #category : 'as yet unclassified' }
+MyPawn >> nextMoveAhead:aSquare [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"
+
 	SubclassResponsibility.
 ]
 
@@ -66,10 +74,12 @@ MyPawn >> renderPieceOn: aSquare [
 
 { #category : 'rendering' }
 MyPawn >> targetSquaresLegal: aBoolean [
-	|col|
+	|col nextSquare |
 	col:= OrderedCollection new.
-	col add: self nextMoveAhead.
+	nextSquare:= self nextMoveAhead.
 	
+	col add: nextSquare .
+		self isFirstMove ifTrue:[ nextSquare hasPiece ifFalse:[ col add: (self nextMoveAhead: nextSquare ) ]].
 		^col select: [ :s |
 		  s notNil and: [
 			  s hasPiece not]]
