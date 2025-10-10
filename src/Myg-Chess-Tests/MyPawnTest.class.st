@@ -6,6 +6,17 @@ Class {
 }
 
 { #category : 'tests' }
+MyPawnTest >> testPawnCanMoveTwoSquaresAtTheFirstMove [
+	"This test should check that a pawn can move forward, one square at a time and except for their first movement."
+	| pawn board |
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyPawn white).
+
+	"Check at first you can do 2 squares move"
+	self assertCollection: pawn legalTargetSquares hasSameElements: (#(e5 e6) collect: [:name|board at: name ]).
+]
+
+{ #category : 'tests' }
 MyPawnTest >> testPawnChangeHisFirstMoveStateToFalse [
 	"This test should check that a pawn can move forward, one square at a time and except for their first movement."
 	| pawn board |
@@ -32,17 +43,14 @@ MyPawnTest >> testPawnChangeHisFirstMoveStateToTrueIfIllegal [
 ]
 
 { #category : 'tests' }
-MyPawnTest >> testPawnCouldMove2SquaresAtFirst [
+MyPawnTest >> testPawnCouldMoveOneSquareAfterTheFirstMove [
 	"This test should check that a pawn can move forward, one square at a time and except for their first movement."
 	| pawn board |
 	board := MyChessBoard empty.
 	board at: 'e4' put: (pawn := MyPawn white).
-
-	"Check at first you can do 2 squares move"
-	self assertCollection: pawn legalTargetSquares hasSameElements: (#(e5 e6) collect: [:name|board at: name ]).
-	"do one move"
+	"do one move instead of 2 for the first"
 	pawn moveTo: (board at: 'e5').
-	"Check now you can only do 1 square move"
+	"Now you can only do 1 square on the next move"
 	self assertCollection: pawn legalTargetSquares hasSameElements: (#(e6)collect: [:name|board at: name ]) .
 ]
 
