@@ -18,6 +18,12 @@ MyNilChessSquare >> addTo: aCollection [
 ]
 
 { #category : 'accessing' }
+MyNilChessSquare >> collectSquares: aFullBlockClosure while: aFullBlockClosure2 forPieceColor: aColor [ 
+	
+	^ OrderedCollection new
+]
+
+{ #category : 'accessing' }
 MyNilChessSquare >> down [
 
 	^ self
@@ -30,19 +36,9 @@ MyNilChessSquare >> hasPiece [
 ]
 
 { #category : 'accessing' }
-MyNilChessSquare >> ifNil: nilBlock ifNotNil: ifNotNilBlock [
+MyNilChessSquare >> highlightTarget [
 
-	^ nilBlock value
-]
-
-{ #category : 'accessing' }
-MyNilChessSquare >> ifNotNil: aBlock [
 	^ self
-]
-
-{ #category : 'accessing' }
-MyNilChessSquare >> isNil [
-	^true
 ]
 
 { #category : 'accessing' }
@@ -52,13 +48,13 @@ MyNilChessSquare >> left [
 ]
 
 { #category : 'accessing' }
-MyNilChessSquare >> notNil [
+MyNilChessSquare >> right [
 
-	^ false
+	^ self
 ]
 
 { #category : 'accessing' }
-MyNilChessSquare >> right [
+MyNilChessSquare >> unhighlightTarget [
 
 	^ self
 ]
