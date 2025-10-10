@@ -81,7 +81,7 @@ MyChessSquare >> collectSquares: collectBlock while: untilBlock forPieceColor: a
 	^ (untilBlock value: (next := collectBlock value: self))
 		  ifTrue: [ next addTo: (next collectSquares: collectBlock while: untilBlock forPieceColor: aColor) yourself ]
 		  ifFalse: [ "If we can eat the next piece, then add it too"
-				  OrderedCollection newFromArray: ((next contents canBeCapturedBy: color ~= aColor)
+				  OrderedCollection newFromArray: ((next contents canBeCapturedBy: aColor)
 						   ifTrue: [ { next } ]
 						   ifFalse: [ {  } ]) ]
 ]
@@ -193,7 +193,7 @@ MyChessSquare >> initialize [
 
 	self addEventHandlerOn: BlClickEvent do: [ :e | self click ].
 
-	self emptyContents
+	contents := MyNilPiece new
 ]
 
 { #category : 'accessing' }
