@@ -1,6 +1,9 @@
 Class {
 	#name : 'MyPawn',
 	#superclass : 'MyPiece',
+	#instVars : [
+		'isFirstMove'
+	],
 	#category : 'Myg-Chess-Core',
 	#package : 'Myg-Chess-Core'
 }
@@ -9,6 +12,24 @@ Class {
 MyPawn >> id [
 
 	^ 'P'
+]
+
+{ #category : 'initialization' }
+MyPawn >> initialize [
+
+	isFirstMove := true
+]
+
+{ #category : 'accessing' }
+MyPawn >> isFirstMove [
+	^isFirstMove
+]
+
+{ #category : 'path commands' }
+MyPawn >> moveTo: aSquare [
+
+	super moveTo: aSquare.
+	isFirstMove := false
 ]
 
 { #category : 'rendering' }
