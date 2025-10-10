@@ -1,4 +1,9 @@
 # Compte rendu sur le projet Chess
+# Chaque branche correspond à 1 kata
+NB: Nous avons travailler sur le même pc pendant quelques scéances
+
+## nil ckecks
+Lors du 9 octobre chaque commit est fait en commun
 
 # Liste des classes et utilité 
 
