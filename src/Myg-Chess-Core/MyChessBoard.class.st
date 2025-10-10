@@ -170,7 +170,7 @@ MyChessBoard >> initializePieces [
 	self at: 'h1' put: MyRook white.
 
 	$a asciiValue to: $h asciiValue do: [ :column |
-		self at: column asCharacter asString , '2' put: MyPawn white ].
+		self at: column asCharacter asString , '2' put: MyPawn white].
 
 	self at: 'a8' put: MyRook black.
 	self at: 'b8' put: MyKnight black.

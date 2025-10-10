@@ -8,6 +8,24 @@ Class {
 	#package : 'Myg-Chess-Core'
 }
 
+{ #category : 'constants' }
+MyPawn class >> black [
+
+	"comment stating purpose of class-side method"
+	"scope: class-variables  &  class-instance-variables"
+
+	^ MyPawnBlack new
+]
+
+{ #category : 'constants' }
+MyPawn class >> white [
+
+	"comment stating purpose of class-side method"
+	"scope: class-variables  &  class-instance-variables"
+
+	^ MyPawnWhite new
+]
+
 { #category : 'accessing' }
 MyPawn >> id [
 
@@ -32,6 +50,14 @@ MyPawn >> moveTo: aSquare [
 	isFirstMove := false
 ]
 
+{ #category : 'as yet unclassified' }
+MyPawn >> nextMoveAhead [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"
+
+	SubclassResponsibility.
+]
+
 { #category : 'rendering' }
 MyPawn >> renderPieceOn: aSquare [ 
 	
@@ -42,14 +68,8 @@ MyPawn >> renderPieceOn: aSquare [
 MyPawn >> targetSquaresLegal: aBoolean [
 	|col|
 	col:= OrderedCollection new.
-	self isWhite
-		ifTrue: [ 
-			col add:  square up.
-			self isFirstMove ifTrue:[col add: square up up] 
-		]
-		ifFalse: [ col add:  square down.
-			self isFirstMove ifTrue:[col add: square down down] 
-			 ].
+	col add: self nextMoveAhead.
+	
 		^col select: [ :s |
 		  s notNil and: [
 			  s hasPiece not]]
