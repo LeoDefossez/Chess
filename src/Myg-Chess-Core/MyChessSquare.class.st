@@ -68,6 +68,35 @@ MyChessSquare >> click [
 	board click: self
 ]
 
+{ #category : 'arithmetic' }
+MyChessSquare >> collectSquares: aBlock [
+
+	^ self collectSquares: aBlock legal: false
+]
+
+{ #category : 'arithmetic' }
+MyChessSquare >> collectSquares: aBlock legal: shouldBeLegal [
+
+	^ self collectSquares: aBlock while: [ :aSquare | aSquare notNil and: [ (shouldBeLegal and: [ aSquare hasPiece ]) not ] ]
+]
+
+{ #category : 'arithmetic' }
+MyChessSquare >> collectSquares: collectBlock while: untilBlock [
+
+	| targets next |
+	targets := OrderedCollection new.
+
+	"Collect up right"
+	next := self.
+	[ untilBlock value: (next := collectBlock value: next) ]
+		whileTrue: [ targets add: next ].
+
+	"If we can it the next piece, then add it too"
+	(next notNil and: [ next contents color ~= color ]) ifTrue: [ targets add: next ].
+
+	^ targets
+]
+
 { #category : 'accessing' }
 MyChessSquare >> color [
 
