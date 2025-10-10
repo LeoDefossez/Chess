@@ -31,5 +31,5 @@ MyKnight >> targetSquares [
 	square down down left addTo: result.
 	square down down right addTo: result.
 
-	^ result select: [ :s | s hasPiece not or: [ s contents color ~= color ] ]
+	^ result reject: [ :s | s contents blocksMovementFor: color ]
 ]

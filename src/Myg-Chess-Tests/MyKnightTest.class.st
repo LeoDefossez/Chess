@@ -9,7 +9,16 @@ Class {
 }
 
 { #category : 'nil' }
-MyKnightTest >> testTargetSquaresLegalCheck6GoodPositionAnd2Wrong [
+MyKnightTest >> testTargetSquaresLegalCheck2GoodPositions [
+
+	| knight board |
+	board := MyChessBoard empty.
+	board at: 'a1' put: (knight := MyKnight white).
+	self assertCollection: (knight targetSquares collect: #name) hasSameElements: { 'c2'. 'b3' }
+]
+
+{ #category : 'nil' }
+MyKnightTest >> testTargetSquaresLegalCheck6SafePositionAnd2InDanger [
 
 	| knight board |
 	board := MyChessBoard empty.

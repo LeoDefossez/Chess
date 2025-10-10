@@ -66,8 +66,7 @@ MyKing >> isKing [
 { #category : 'accessing' }
 MyKing >> opponentPieces [
 
-	^ self board pieces select: [ :e |
-		  e notNil and: [ e color = color negated ] ]
+	^ self board pieces select: [ :piece | piece canBeCapturedBy: color]
 ]
 
 { #category : 'rendering' }
@@ -82,6 +81,6 @@ MyKing >> targetSquares [
 
 	| threatenedSquares |
 	threatenedSquares := self opponentPieces flatCollect: [ :e | e attackingSquares ].
-	^ self basicTargetSquares select: [ :s | "Either the square is empty and not threatened or the square has an opponent piece and not threatened"
-		  (threatenedSquares includes: s) not and: [ s hasPiece not or: [ s contents color ~= color ] ] ]
+	^ self basicTargetSquares reject: [ :s | "Either the square is empty and not threatened or the square has an opponent piece and not threatened"
+		  (threatenedSquares includes: s) or: [ s contents canBeCapturedBy: color ] ]
 ]

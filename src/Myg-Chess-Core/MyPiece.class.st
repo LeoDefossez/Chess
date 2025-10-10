@@ -33,8 +33,8 @@ MyPiece >> attackingSquares [
 
 { #category : 'as yet unclassified' }
 MyPiece >> blocksMovementFor: aColor [
-	"A piece will always block movement"
-    ^ true 
+
+	^ true
 ]
 
 { #category : 'path commands' }

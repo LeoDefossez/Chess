@@ -9,10 +9,17 @@ Class {
 }
 
 { #category : 'tests' }
-MyPieceTest >> testBlocksMovementFor [
+MyPieceTest >> testBlocksMovementForWithDifferentColors [
 
 	self assert: (MyPiece black blocksMovementFor: Color white).
-	self assert: (MyPiece white blocksMovementFor: Color black)
+	self assert: (MyPiece black blocksMovementFor: Color white)
+]
+
+{ #category : 'tests' }
+MyPieceTest >> testBlocksMovementForWithSameColors [
+
+	self assert: (MyPiece black blocksMovementFor: Color black).
+	self assert: (MyPiece white blocksMovementFor: Color white)
 ]
 
 { #category : 'tests' }

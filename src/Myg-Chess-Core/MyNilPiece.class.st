@@ -8,6 +8,7 @@ Class {
 { #category : 'as yet unclassified' }
 MyNilPiece >> blocksMovementFor: aColor [
 	"Is not a real piece, so it does not block movement"
+
     ^ false 
 ]
 

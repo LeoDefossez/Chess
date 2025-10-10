@@ -17,10 +17,8 @@ MyChessSquareTest >> testCollectSquaresWhileWithEnnemieAtTheEndOfPathWithDiffere
 	board := MyChessBoard empty.
 	square := board at: 'a1'.
 
-	board at: 'a4' put: MyKnight black.
-	self
-		assertCollection: ((square collectSquares: [ :sq | sq up ] forPieceColor: Color white) collect: #name)
-		hasSameElements: { 'a2'. 'a3'. 'a4' }
+	board at: 'a4' put: MyRook black.
+	self assertCollection: ((square collectSquares: #up forPieceColor: Color white) collect: #name) hasSameElements: { 'a2'. 'a3'. 'a4' }
 ]
 
 { #category : 'tests' }

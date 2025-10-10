@@ -78,8 +78,9 @@ MyChessSquare >> collectSquares: aBlock forPieceColor: aColor [
 MyChessSquare >> collectSquares: collectBlock while: untilBlock forPieceColor: aColor [
 
 	| next |
-	^ (untilBlock value: (next := collectBlock value: self))
-		  ifTrue: [ next addTo: (next collectSquares: collectBlock while: untilBlock forPieceColor: aColor) yourself ]
+	next := collectBlock value: self.
+	^ (untilBlock value: next)
+		  ifTrue: [ next addTo: (next collectSquares: collectBlock while: untilBlock forPieceColor: aColor) ]
 		  ifFalse: [ "If we can eat the next piece, then add it too"
 				  OrderedCollection newFromArray: ((next contents canBeCapturedBy: aColor)
 						   ifTrue: [ { next } ]
