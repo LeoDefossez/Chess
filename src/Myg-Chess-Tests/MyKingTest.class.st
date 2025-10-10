@@ -78,7 +78,7 @@ MyKingTest >> testTargetSquaresLegalCheck6GoodPositionAnd2Wrong [
 	board := MyChessBoard empty.
 	board at: 'e4' put: (king := MyKing white).
 	board at: 'f6' put: MyKing black.
-	self assertCollection: (king legalTargetSquares collect: [ :sq | sq name ])
+	self assertCollection: (king targetSquares collect: [ :sq | sq name ])
 		hasSameElements: { 'e3'. 'd3'. 'd4'. 'd5'. 'f3'. 'f4'. }
 ]
 
@@ -89,7 +89,7 @@ MyKingTest >> testTargetSquaresLegalCheck8Position [
 	board := MyChessBoard empty.
 	board at: 'e4' put: (king := MyKing white).
 	self
-		assertCollection: (king legalTargetSquares collect: [ :sq | sq name ])
+		assertCollection: (king targetSquares collect: [ :sq | sq name ])
 		hasSameElements: { 'e3'. 'e5'. 'd3'. 'd4'. 'd5'. 'f3'. 'f4'. 'f5' }
 ]
 
@@ -101,5 +101,5 @@ MyKingTest >> testTargetSquaresLegalCheckNoMoveRemained [
 	board at: 'a1' put: (king := MyKing white).
 	board at: 'a3' put: MyKing black.
 	board at: 'c1' put: MyKing black.
-	self assertEmpty: (king legalTargetSquares).
+	self assertEmpty: (king targetSquares).
 ]

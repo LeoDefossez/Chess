@@ -42,7 +42,7 @@ MyKing >> isCheckMated [
 	threatenedSquares := self opponentPieces flatCollect: [ :e |
 		                     e attackingSquares ].
 
-	^ self legalTargetSquares isEmpty and: [
+	^ self targetSquares isEmpty and: [
 		  threatenedSquares includes: self square ]
 ]
 
@@ -77,7 +77,7 @@ MyKing >> renderPieceOn: aSquare [
 ]
 
 { #category : 'rendering' }
-MyKing >> targetSquaresLegal: aBoolean [
+MyKing >> targetSquares [
 	"The king cannot move to threatened squares"
 
 	| threatenedSquares |

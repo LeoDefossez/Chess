@@ -12,16 +12,10 @@ MyQueen >> renderPieceOn: aSquare [
 ]
 
 { #category : 'rendering' }
-MyQueen >> targetSquaresLegal: aBoolean [
+MyQueen >> targetSquares [
 
 	| likeABishop likeARook |
-	likeABishop := (self upRightDiagonalLegal: aBoolean)
-	               , (self upLeftDiagonalLegal: aBoolean)
-	               , (self downRightDiagonalLegal: aBoolean)
-	               , (self downLeftDiagonalLegal: aBoolean).
-	likeARook := (self upFileLegal: aBoolean)
-	             , (self downFileLegal: aBoolean)
-	             , (self leftFileLegal: aBoolean)
-	             , (self rightFileLegal: aBoolean).
+	likeABishop := self upRightDiagonal , self upLeftDiagonal , self downRightDiagonal , self downLeftDiagonal.
+	likeARook := self upFile , self downFile , self leftFile , self rightFile.
 	^ likeABishop , likeARook
 ]

@@ -18,10 +18,7 @@ MyBishop >> renderPieceOn: aSquare [
 ]
 
 { #category : 'rendering' }
-MyBishop >> targetSquaresLegal: aBoolean [
+MyBishop >> targetSquares [
 
-	^ (self upRightDiagonalLegal: aBoolean)
-	  , (self upLeftDiagonalLegal: aBoolean)
-	  , (self downRightDiagonalLegal: aBoolean)
-	  , (self downLeftDiagonalLegal: aBoolean)
+	^ self upRightDiagonal , self upLeftDiagonal , self downRightDiagonal , self downLeftDiagonal
 ]

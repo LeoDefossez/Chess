@@ -15,7 +15,7 @@ MyKnightTest >> testTargetSquaresLegalCheck6GoodPositionAnd2Wrong [
 	board := MyChessBoard empty.
 	board at: 'e4' put: (knight := MyKnight white).
 	board at: 'h7' put: MyKnight black.
-	self assertCollection: (knight legalTargetSquares collect: [ :sq | sq name ]) hasSameElements: { 'd6'. 'f6'. 'c5'. 'g5'. 'd2'. 'f2'. 'c3'. 'g3' }
+	self assertCollection: (knight targetSquares collect: [ :sq | sq name ]) hasSameElements: { 'd6'. 'f6'. 'c5'. 'g5'. 'd2'. 'f2'. 'c3'. 'g3' }
 ]
 
 { #category : 'nil' }
@@ -25,6 +25,6 @@ MyKnightTest >> testTargetSquaresLegalCheck8Position [
 	board := MyChessBoard empty.
 	board at: 'e4' put: (knight := MyKnight white).
 	self
-		assertCollection: (knight legalTargetSquares collect: [ :sq | sq name ])
+		assertCollection: (knight targetSquares collect: [ :sq | sq name ])
 		hasSameElements: { 'd6'. 'f6'. 'c5'. 'g5'. 'd2'. 'f2'. 'c3'. 'g3' }
 ]

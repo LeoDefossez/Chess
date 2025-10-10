@@ -71,25 +71,15 @@ MyChessSquare >> click [
 { #category : 'arithmetic' }
 MyChessSquare >> collectSquares: aBlock forPieceColor: aColor [
 
-	^ self collectSquares: aBlock legal: false forPieceColor: aColor
-]
-
-{ #category : 'arithmetic' }
-MyChessSquare >> collectSquares: aBlock legal: shouldBeLegal forPieceColor: aColor [
-
-	^ self collectSquares: aBlock while: [ :aSquare | aSquare notNil and: [ (shouldBeLegal and: [ aSquare hasPiece ]) not ] ] forPieceColor: aColor
+	^ self collectSquares: aBlock while: [ :aSquare | aSquare hasPiece not ] forPieceColor: aColor
 ]
 
 { #category : 'arithmetic' }
 MyChessSquare >> collectSquares: collectBlock while: untilBlock forPieceColor: aColor [
 
 	| next |
-	
 	^ (untilBlock value: (next := collectBlock value: self))
-		  ifTrue: [
-				  (next collectSquares: collectBlock while: untilBlock forPieceColor: aColor)
-					  add: next;
-					  yourself ]
+		  ifTrue: [ next addTo: (next collectSquares: collectBlock while: untilBlock forPieceColor: aColor) yourself ]
 		  ifFalse: [ "If we can it the next piece, then add it too"
 				  OrderedCollection newFromArray: ((next hasPiece and: [ next contents color ~= aColor ])
 						   ifTrue: [ { next } ]

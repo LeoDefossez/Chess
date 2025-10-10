@@ -18,7 +18,7 @@ MyKnight >> renderPieceOn: aSquare [
 ]
 
 { #category : 'rendering' }
-MyKnight >> targetSquaresLegal: aBoolean [
+MyKnight >> targetSquares [
 
 	| result |
 	result := OrderedCollection new.

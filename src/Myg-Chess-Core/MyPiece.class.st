@@ -28,7 +28,7 @@ MyPiece class >> white [
 { #category : 'as yet unclassified' }
 MyPiece >> attackingSquares [
 
-	^ self legalTargetSquares
+	^ self targetSquares
 ]
 
 { #category : 'path commands' }
@@ -52,41 +52,19 @@ MyPiece >> color: aColor [
 { #category : 'rendering' }
 MyPiece >> downFile [
 
-	^ self downFileLegal: false
-]
-
-{ #category : 'rendering' }
-MyPiece >> downFileLegal: aBoolean [
-
-	^ square collectSquares: [ :aSquare | aSquare down ] legal: aBoolean forPieceColor: self color
+	^ square collectSquares: [ :aSquare | aSquare down ] forPieceColor: self color
 ]
 
 { #category : 'rendering' }
 MyPiece >> downLeftDiagonal [
 
-	^ self downLeftDiagonalLegal: false
-]
-
-{ #category : 'rendering' }
-MyPiece >> downLeftDiagonalLegal: aBoolean [
-
-	^ square
-		  collectSquares: [ :aSquare | aSquare down ifNotNil: #left ]
-		  legal: aBoolean forPieceColor: self color
+	^ square collectSquares: [ :aSquare | aSquare down left ] forPieceColor: self color
 ]
 
 { #category : 'rendering' }
 MyPiece >> downRightDiagonal [
 
-	^ self downRightDiagonalLegal: false
-]
-
-{ #category : 'rendering' }
-MyPiece >> downRightDiagonalLegal: aBoolean [
-
-	^ square
-		  collectSquares: [ :aSquare | aSquare down ifNotNil: #right ]
-		  legal: aBoolean forPieceColor: self color
+	^ square collectSquares: [ :aSquare | aSquare down right ] forPieceColor: self color
 ]
 
 { #category : 'accessing' }
@@ -116,25 +94,13 @@ MyPiece >> isWhite [
 { #category : 'rendering' }
 MyPiece >> leftFile [
 
-	^ self leftFileLegal: false
-]
-
-{ #category : 'rendering' }
-MyPiece >> leftFileLegal: aBoolean [
-
-	^ square collectSquares: [ :aSquare | aSquare left ] legal: aBoolean forPieceColor: self color
-]
-
-{ #category : 'path commands' }
-MyPiece >> legalTargetSquares [
-
-	^ self targetSquaresLegal: true
+	^ square collectSquares: [ :aSquare | aSquare left ] forPieceColor: self color
 ]
 
 { #category : 'path commands' }
 MyPiece >> moveTo: aSquare [
 
-	(self legalTargetSquares includes: aSquare) ifFalse: [ ^ self ].
+	(self targetSquares includes: aSquare) ifFalse: [ ^ self ].
 
 	square emptyContents.
 	square := aSquare.
@@ -144,13 +110,7 @@ MyPiece >> moveTo: aSquare [
 { #category : 'rendering' }
 MyPiece >> rightFile [
 
-	^ self rightFileLegal: false
-]
-
-{ #category : 'rendering' }
-MyPiece >> rightFileLegal: aBoolean [
-
-	^ square collectSquares: [ :aSquare | aSquare right ] legal: aBoolean forPieceColor: self color
+	^ square collectSquares: [ :aSquare | aSquare right ]forPieceColor: self color
 ]
 
 { #category : 'accessing' }
@@ -167,49 +127,23 @@ MyPiece >> square: aMyChessSquare [
 { #category : 'rendering' }
 MyPiece >> targetSquares [
 
-	^ self targetSquaresLegal: false
-]
-
-{ #category : 'rendering' }
-MyPiece >> targetSquaresLegal: aBoolean [
-
 	self subclassResponsibility
 ]
 
 { #category : 'rendering' }
 MyPiece >> upFile [
 
-	^ self upFileLegal: false
-]
-
-{ #category : 'rendering' }
-MyPiece >> upFileLegal: aBoolean [
-
-	^ square collectSquares: [ :aSquare | aSquare up ] legal: aBoolean forPieceColor: self color
+	^ square collectSquares: [ :aSquare | aSquare up ] forPieceColor: self color
 ]
 
 { #category : 'rendering' }
 MyPiece >> upLeftDiagonal [
 
-	^ self upLeftDiagonalLegal: false
-]
-
-{ #category : 'rendering' }
-MyPiece >> upLeftDiagonalLegal: aBoolean [
-
-	^ square collectSquares: [ :aSquare | aSquare up ifNotNil: #left ] legal: aBoolean forPieceColor: self color
+	^ square collectSquares: [ :aSquare | aSquare up left ] forPieceColor: self color
 ]
 
 { #category : 'rendering' }
 MyPiece >> upRightDiagonal [
 
-	^ self upRightDiagonalLegal: false
-]
-
-{ #category : 'rendering' }
-MyPiece >> upRightDiagonalLegal: aBoolean [
-
-	^ square
-		  collectSquares: [ :aSquare | aSquare up ifNotNil: #right ]
-		  legal: aBoolean forPieceColor: self color
+	^ square collectSquares: [ :aSquare | aSquare up right ] forPieceColor: self color
 ]

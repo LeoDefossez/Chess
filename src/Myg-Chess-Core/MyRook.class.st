@@ -21,10 +21,3 @@ MyRook >> targetSquares [
 
 	^ self upFile , self downFile , self leftFile , self rightFile
 ]
-
-{ #category : 'rendering' }
-MyRook >> targetSquaresLegal: aBoolean [
-
-	^ (self upFileLegal: aBoolean) , (self downFileLegal: aBoolean)
-	  , (self leftFileLegal: aBoolean) , (self rightFileLegal: aBoolean)
-]

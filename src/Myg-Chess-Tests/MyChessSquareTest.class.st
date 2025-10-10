@@ -11,8 +11,27 @@ MyChessSquareTest >> testAddTo [
 ]
 
 { #category : 'tests' }
-MyChessSquareTest >> testCollectSquaresWhileWithEnnemieAtTheEndOfPath [
-	self fail
+MyChessSquareTest >> testCollectSquaresWhileWithEnnemieAtTheEndOfPathWithDifferentColor [
+
+	| board square |
+	board := MyChessBoard empty.
+	square := board at: 'a1'.
+
+	board at: 'a4' put: MyKnight black.
+	self
+		assertCollection: ((square collectSquares: [ :sq | sq up ] forPieceColor: Color white) collect: #name)
+		hasSameElements: { 'a2'. 'a3'. 'a4' }
+]
+
+{ #category : 'tests' }
+MyChessSquareTest >> testCollectSquaresWhileWithEnnemieAtTheEndOfPathWithSameColor [
+
+	| board square |
+	board := MyChessBoard empty.
+	square := board at: 'a1'.
+
+	board at: 'a4' put: MyKnight black.
+	self assertCollection: ((square collectSquares: #up forPieceColor: Color black) collect: #name) hasSameElements: { 'a2'. 'a3' }
 ]
 
 { #category : 'tests' }

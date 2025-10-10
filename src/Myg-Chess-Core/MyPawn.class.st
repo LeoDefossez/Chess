@@ -18,7 +18,7 @@ MyPawn >> renderPieceOn: aSquare [
 ]
 
 { #category : 'rendering' }
-MyPawn >> targetSquaresLegal: aBoolean [
+MyPawn >> targetSquares [
 
 	^ (self isWhite
 		   ifTrue: [ { square up } ]
