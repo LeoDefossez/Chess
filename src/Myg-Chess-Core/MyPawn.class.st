@@ -40,10 +40,17 @@ MyPawn >> renderPieceOn: aSquare [
 
 { #category : 'rendering' }
 MyPawn >> targetSquaresLegal: aBoolean [
-
-	^ (self isWhite
-		   ifTrue: [ { square up } ]
-		   ifFalse: [ { square down } ]) select: [ :s |
+	|col|
+	col:= OrderedCollection new.
+	self isWhite
+		ifTrue: [ 
+			col add:  square up.
+			self isFirstMove ifTrue:[col add: square up up] 
+		]
+		ifFalse: [ col add:  square down.
+			self isFirstMove ifTrue:[col add: square down down] 
+			 ].
+		^col select: [ :s |
 		  s notNil and: [
 			  s hasPiece not]]
 ]

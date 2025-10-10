@@ -19,6 +19,19 @@ MyPawnTest >> testPawnChangeHisFirstMoveStateToFalse [
 ]
 
 { #category : 'tests' }
+MyPawnTest >> testPawnChangeHisFirstMoveStateToTrueIfIllegal [
+"Ce test s'assure que lorsqu'un pion effectue un mouvement non autorisé n'affecte pas le statut du pion"
+	| pawn board |
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyPawn white).
+	"Check at first you can do 2 squares move"
+	"do one move"
+	pawn moveTo: 'e4'.
+	"Check now you can only do 1 square move"
+	self assert: pawn isFirstMove.
+]
+
+{ #category : 'tests' }
 MyPawnTest >> testPawnCouldMove2SquaresAtFirst [
 	"This test should check that a pawn can move forward, one square at a time and except for their first movement."
 	| pawn board |
