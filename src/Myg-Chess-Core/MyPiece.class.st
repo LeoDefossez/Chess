@@ -125,6 +125,13 @@ MyPiece >> moveTo: aSquare [
 ]
 
 { #category : 'rendering' }
+MyPiece >> moveTo: toChessSquare from: fromChessSquare in: aMyChessBoard [
+
+	aMyChessBoard unhighLightTargets: fromChessSquare contents targetSquares.
+	aMyChessBoard game move: fromChessSquare contents to: toChessSquare
+]
+
+{ #category : 'rendering' }
 MyPiece >> rightFile [
 
 	^ square collectSquares: [ :aSquare | aSquare right ]forPieceColor: self color

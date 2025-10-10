@@ -11,6 +11,11 @@ MyPawn >> id [
 	^ 'P'
 ]
 
+{ #category : 'accessing' }
+MyPawn >> moveTo: aMyChessSquare in: aMyChessBoard [ 
+	self shouldBeImplemented.
+]
+
 { #category : 'rendering' }
 MyPawn >> renderPieceOn: aSquare [ 
 	

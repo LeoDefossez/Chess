@@ -23,7 +23,19 @@ MyNilPiece >> isAllyOf: aColor [
 	^ false
 ]
 
+{ #category : 'as yet unclassified' }
+MyNilPiece >> moveTo: toChessSquare from: fromChessSquare in: aMyChessBoard [
+
+	^ self
+]
+
 { #category : 'rendering' }
 MyNilPiece >> renderPieceOn: aMyChessSquare [ 
 	^ aMyChessSquare renderNilPiece: self
+]
+
+{ #category : 'as yet unclassified' }
+MyNilPiece >> targetSquares [
+
+	^ OrderedCollection new
 ]
