@@ -6,6 +6,21 @@ Class {
 }
 
 { #category : 'tests' }
+MyPawnTest >> testPawnCouldMove2SquaresAtFirst [
+	"This test should check that a pawn can move forward, one square at a time and except for their first movement."
+	| pawn board |
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyPawn white).
+
+	"Check at first you can do 2 squares move"
+	self assertCollection: pawn legalTargetSquares hasSameElements: #('e5','e6').
+	"do one move"
+	pawn moveTo: 'e5'.
+	"Check now you can only do 1 square move"
+	self assertCollection: pawn legalTargetSquares hasSameElements: #('e6')
+]
+
+{ #category : 'tests' }
 MyPawnTest >> testPawnCouldNotEatInFrontOfHim [
 	"This test should check that if a pawn is in front of an other pawn in cannot eat him"
 	| pawn board |
