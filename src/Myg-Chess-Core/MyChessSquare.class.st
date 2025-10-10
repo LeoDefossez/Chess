@@ -80,7 +80,7 @@ MyChessSquare >> collectSquares: collectBlock while: untilBlock forPieceColor: a
 	| next |
 	^ (untilBlock value: (next := collectBlock value: self))
 		  ifTrue: [ next addTo: (next collectSquares: collectBlock while: untilBlock forPieceColor: aColor) yourself ]
-		  ifFalse: [ "If we can it the next piece, then add it too"
+		  ifFalse: [ "If we can eat the next piece, then add it too"
 				  OrderedCollection newFromArray: ((next hasPiece and: [ next contents color ~= aColor ])
 						   ifTrue: [ { next } ]
 						   ifFalse: [ {  } ]) ]
@@ -136,7 +136,7 @@ MyChessSquare >> down [
 { #category : 'asd' }
 MyChessSquare >> emptyContents [
 	
-	self contents: nil
+	self contents: MyNilPiece new
 ]
 
 { #category : 'accessing' }
@@ -170,8 +170,8 @@ MyChessSquare >> initialize [
 
 	super initialize.
 	target := BlElement new
-		  geometry: BlCircleGeometry new;
-		  background: (Color gray alpha: 0.3).
+		          geometry: BlCircleGeometry new;
+		          background: (Color gray alpha: 0.3).
 
 	self layout: BlFrameLayout new.
 
@@ -181,8 +181,8 @@ MyChessSquare >> initialize [
 	piece := BlTextElement new.
 	piece text: '' asRopedText.
 	piece constraintsDo: [ :c |
-		c frame horizontal alignCenter.
-		c frame vertical alignCenter ].
+			c frame horizontal alignCenter.
+			c frame vertical alignCenter ].
 
 	self
 		addChild: label;
@@ -191,7 +191,9 @@ MyChessSquare >> initialize [
 		background: Color white;
 		geometry: BlSquareGeometry new.
 
-	self addEventHandlerOn: BlClickEvent do: [ :e | self click ]
+	self addEventHandlerOn: BlClickEvent do: [ :e | self click ].
+
+	self emptyContents
 ]
 
 { #category : 'accessing' }

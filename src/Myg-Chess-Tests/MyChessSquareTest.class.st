@@ -46,6 +46,17 @@ MyChessSquareTest >> testHighlightTarget [
 ]
 
 { #category : 'tests' }
+MyChessSquareTest >> testInitializeWithANilPiece [
+
+	| square |
+	square := MyChessSquare basicNew
+		          color: Color black;
+		          board: MyChessBoard empty;
+		          initialize.
+	self assert: square contents class name equals: MyNilPiece name
+]
+
+{ #category : 'tests' }
 MyChessSquareTest >> testPlusGiveANil [
 	"The method should return the next neighbourough, or nil if no neighbourgh"
 	|board square|
