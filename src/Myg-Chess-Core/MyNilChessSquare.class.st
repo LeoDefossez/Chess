@@ -24,6 +24,12 @@ MyNilChessSquare >> down [
 ]
 
 { #category : 'accessing' }
+MyNilChessSquare >> hasPiece [
+
+	^ false
+]
+
+{ #category : 'accessing' }
 MyNilChessSquare >> ifNil: nilBlock ifNotNil: ifNotNilBlock [
 
 	^ nilBlock value

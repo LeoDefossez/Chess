@@ -83,18 +83,17 @@ MyChessSquare >> collectSquares: aBlock legal: shouldBeLegal [
 { #category : 'arithmetic' }
 MyChessSquare >> collectSquares: collectBlock while: untilBlock [
 
-	| targets next |
-	targets := OrderedCollection new.
-
-	"Collect up right"
-	next := self.
-	[ untilBlock value: (next := collectBlock value: next) ]
-		whileTrue: [ targets add: next ].
-
-	"If we can it the next piece, then add it too"
-	(next notNil and: [ next contents color ~= color ]) ifTrue: [ targets add: next ].
-
-	^ targets
+	| next |
+	
+	^ (untilBlock value: (next := collectBlock value: self))
+		  ifTrue: [
+				  (next collectSquares: collectBlock while: untilBlock)
+					  add: next;
+					  yourself ]
+		  ifFalse: [ "If we can it the next piece, then add it too"
+				  OrderedCollection newFromArray: ((next hasPiece and: [ next contents color ~= color ])
+						   ifTrue: [ { next } ]
+						   ifFalse: [ {  } ]) ]
 ]
 
 { #category : 'accessing' }
