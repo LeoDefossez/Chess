@@ -58,7 +58,7 @@ MyPiece >> downFile [
 { #category : 'rendering' }
 MyPiece >> downFileLegal: aBoolean [
 
-	^ square collectSquares: [ :aSquare | aSquare down ] legal: aBoolean
+	^ square collectSquares: [ :aSquare | aSquare down ] legal: aBoolean forPieceColor: self color
 ]
 
 { #category : 'rendering' }
@@ -72,7 +72,7 @@ MyPiece >> downLeftDiagonalLegal: aBoolean [
 
 	^ square
 		  collectSquares: [ :aSquare | aSquare down ifNotNil: #left ]
-		  legal: aBoolean
+		  legal: aBoolean forPieceColor: self color
 ]
 
 { #category : 'rendering' }
@@ -86,7 +86,7 @@ MyPiece >> downRightDiagonalLegal: aBoolean [
 
 	^ square
 		  collectSquares: [ :aSquare | aSquare down ifNotNil: #right ]
-		  legal: aBoolean
+		  legal: aBoolean forPieceColor: self color
 ]
 
 { #category : 'accessing' }
@@ -122,7 +122,7 @@ MyPiece >> leftFile [
 { #category : 'rendering' }
 MyPiece >> leftFileLegal: aBoolean [
 
-	^ square collectSquares: [ :aSquare | aSquare left ] legal: aBoolean
+	^ square collectSquares: [ :aSquare | aSquare left ] legal: aBoolean forPieceColor: self color
 ]
 
 { #category : 'path commands' }
@@ -150,7 +150,7 @@ MyPiece >> rightFile [
 { #category : 'rendering' }
 MyPiece >> rightFileLegal: aBoolean [
 
-	^ square collectSquares: [ :aSquare | aSquare right ] legal: aBoolean
+	^ square collectSquares: [ :aSquare | aSquare right ] legal: aBoolean forPieceColor: self color
 ]
 
 { #category : 'accessing' }
@@ -185,7 +185,7 @@ MyPiece >> upFile [
 { #category : 'rendering' }
 MyPiece >> upFileLegal: aBoolean [
 
-	^ square collectSquares: [ :aSquare | aSquare up ] legal: aBoolean
+	^ square collectSquares: [ :aSquare | aSquare up ] legal: aBoolean forPieceColor: self color
 ]
 
 { #category : 'rendering' }
@@ -197,7 +197,7 @@ MyPiece >> upLeftDiagonal [
 { #category : 'rendering' }
 MyPiece >> upLeftDiagonalLegal: aBoolean [
 
-	^ square collectSquares: [ :aSquare | aSquare up ifNotNil: #left ] legal: aBoolean
+	^ square collectSquares: [ :aSquare | aSquare up ifNotNil: #left ] legal: aBoolean forPieceColor: self color
 ]
 
 { #category : 'rendering' }
@@ -211,5 +211,5 @@ MyPiece >> upRightDiagonalLegal: aBoolean [
 
 	^ square
 		  collectSquares: [ :aSquare | aSquare up ifNotNil: #right ]
-		  legal: aBoolean
+		  legal: aBoolean forPieceColor: self color
 ]

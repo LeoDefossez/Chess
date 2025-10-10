@@ -11,6 +11,11 @@ MyChessSquareTest >> testAddTo [
 ]
 
 { #category : 'tests' }
+MyChessSquareTest >> testCollectSquaresWhileWithEnnemieAtTheEndOfPath [
+	self fail
+]
+
+{ #category : 'tests' }
 MyChessSquareTest >> testPlusGiveANil [
 	"The method should return the next neighbourough, or nil if no neighbourgh"
 	|board square|
