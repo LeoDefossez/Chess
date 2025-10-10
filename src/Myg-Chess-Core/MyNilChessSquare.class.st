@@ -24,6 +24,12 @@ MyNilChessSquare >> collectSquares: aFullBlockClosure while: aFullBlockClosure2 
 ]
 
 { #category : 'accessing' }
+MyNilChessSquare >> contents [
+
+	^ MyNilPiece new
+]
+
+{ #category : 'accessing' }
 MyNilChessSquare >> down [
 
 	^ self

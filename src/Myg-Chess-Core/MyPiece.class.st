@@ -31,10 +31,22 @@ MyPiece >> attackingSquares [
 	^ self targetSquares
 ]
 
+{ #category : 'as yet unclassified' }
+MyPiece >> blocksMovementFor: aColor [
+	"A piece will always block movement"
+    ^ true 
+]
+
 { #category : 'path commands' }
 MyPiece >> board [
 
 	^ square board
+]
+
+{ #category : 'as yet unclassified' }
+MyPiece >> canBeCapturedBy: aColor [
+
+	^ self color ~= aColor
 ]
 
 { #category : 'accessing' }
