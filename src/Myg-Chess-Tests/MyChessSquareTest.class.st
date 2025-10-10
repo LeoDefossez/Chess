@@ -35,6 +35,17 @@ MyChessSquareTest >> testCollectSquaresWhileWithEnnemieAtTheEndOfPathWithSameCol
 ]
 
 { #category : 'tests' }
+MyChessSquareTest >> testHighlightTarget [
+
+	| square lastSize |
+	square := MyChessSquare new.
+	lastSize := square children size.
+	square highlightTarget.
+
+	self assert: square children size equals: lastSize + 1
+]
+
+{ #category : 'tests' }
 MyChessSquareTest >> testPlusGiveANil [
 	"The method should return the next neighbourough, or nil if no neighbourgh"
 	|board square|
@@ -53,4 +64,17 @@ MyChessSquareTest >> testPlusGiveASquare [
 	board := MyChessBoard empty.
 	square := board at: 'e5'.
 	self assert: (square + (2@3)) name equals: 'g8' 
+]
+
+{ #category : 'tests' }
+MyChessSquareTest >> testUnHighlightTarget [
+
+	| square lastSize |
+	square := MyChessSquare new.
+
+	square highlightTarget.
+	lastSize := square children size.
+	
+	square unhighlightTarget.
+	self assert: square children size equals: lastSize -1
 ]
