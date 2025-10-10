@@ -36,12 +36,6 @@ MyNilChessSquare >> down [
 ]
 
 { #category : 'accessing' }
-MyNilChessSquare >> hasPiece [
-
-	^ false
-]
-
-{ #category : 'accessing' }
 MyNilChessSquare >> highlightTarget [
 
 	^ self

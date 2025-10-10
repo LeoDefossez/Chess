@@ -34,7 +34,7 @@ MyPiece >> attackingSquares [
 { #category : 'as yet unclassified' }
 MyPiece >> blocksMovementFor: aColor [
 
-	^ false
+	^ true
 ]
 
 { #category : 'path commands' }
