@@ -72,6 +72,19 @@ MyKingTest >> testIsNotCheckBySameColorRook [
 ]
 
 { #category : 'tests' }
+MyKingTest >> testTargetSquaresCannotEatAlly [
+
+
+	| king board |
+	board := MyChessBoard empty.
+	board at: 'e4' put: (king := MyKing white).
+	board at: 'e5' put:  MyKing white.
+	self
+		assertCollection: (king targetSquares collect: [ :sq | sq name ])
+		hasSameElements: { 'e3'. 'd3'. 'd4'. 'd5'. 'f3'. 'f4'. 'f5' }
+]
+
+{ #category : 'tests' }
 MyKingTest >> testTargetSquaresLegalCheck6GoodPositionAnd2Wrong [
 
 	| king board |

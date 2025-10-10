@@ -18,6 +18,11 @@ MyNilPiece >> canBeCapturedBy: aColor [
 	^ false
 ]
 
+{ #category : 'testing' }
+MyNilPiece >> isAllyOf: aColor [
+	^ false
+]
+
 { #category : 'rendering' }
 MyNilPiece >> renderPieceOn: aMyChessSquare [ 
 	^ aMyChessSquare renderNilPiece: self

@@ -81,6 +81,5 @@ MyKing >> targetSquares [
 
 	| threatenedSquares |
 	threatenedSquares := self opponentPieces flatCollect: [ :e | e attackingSquares ].
-	^ self basicTargetSquares reject: [ :s | "Either the square is empty and not threatened or the square has an opponent piece and not threatened"
-		  (threatenedSquares includes: s) or: [ (s contents canBeCapturedBy: color) or: [ s contents blocksMovementFor: color ] ] ]
+	^ self basicTargetSquares reject: [ :s | (threatenedSquares includes: s) or: [ s contents isAllyOf: color ] ]
 ]

@@ -22,5 +22,5 @@ MyPawn >> targetSquares [
 
 	^ (self isWhite
 		   ifTrue: [ { square up } ]
-		   ifFalse: [ { square down } ]) reject: [ :s | s contents blocksMovementFor: color ]
+		   ifFalse: [ { square down } ]) reject: [ :s | s contents isAllyOf: color ]
 ]

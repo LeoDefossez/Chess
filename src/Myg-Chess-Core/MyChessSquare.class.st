@@ -71,7 +71,7 @@ MyChessSquare >> click [
 { #category : 'arithmetic' }
 MyChessSquare >> collectSquares: aBlock forPieceColor: aColor [
 
-	^ self collectSquares: aBlock while: [ :aSquare | (aSquare contents blocksMovementFor: aColor) not ] forPieceColor: aColor
+	^ self collectSquares: aBlock while: [ :aSquare | (aSquare contents isAllyOf: color) not ] forPieceColor: aColor
 ]
 
 { #category : 'arithmetic' }

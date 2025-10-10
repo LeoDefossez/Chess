@@ -34,7 +34,7 @@ MyPiece >> attackingSquares [
 { #category : 'as yet unclassified' }
 MyPiece >> blocksMovementFor: aColor [
 
-	^ true
+	^ false
 ]
 
 { #category : 'path commands' }
@@ -83,6 +83,11 @@ MyPiece >> downRightDiagonal [
 MyPiece >> id [
 
 	^ 'Q'
+]
+
+{ #category : 'rendering' }
+MyPiece >> isAllyOf: aColor [
+	^ self color = aColor
 ]
 
 { #category : 'testing' }

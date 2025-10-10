@@ -31,5 +31,5 @@ MyKnight >> targetSquares [
 	square down down left addTo: result.
 	square down down right addTo: result.
 
-	^ result reject: [ :s | s contents blocksMovementFor: color ]
+	^ result reject: [ :s | s contents isAllyOf: color ]
 ]
