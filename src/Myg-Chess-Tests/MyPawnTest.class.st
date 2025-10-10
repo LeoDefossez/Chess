@@ -26,7 +26,7 @@ MyPawnTest >> testPawnChangeHisFirstMoveStateToTrueIfIllegal [
 	board at: 'e4' put: (pawn := MyPawn white).
 	"Check at first you can do 2 squares move"
 	"do one move"
-	pawn moveTo: 'e4'.
+	pawn moveTo: (board at: 'e4').
 	"Check now you can only do 1 square move"
 	self assert: pawn isFirstMove.
 ]
@@ -39,11 +39,11 @@ MyPawnTest >> testPawnCouldMove2SquaresAtFirst [
 	board at: 'e4' put: (pawn := MyPawn white).
 
 	"Check at first you can do 2 squares move"
-	self assertCollection: pawn legalTargetSquares hasSameElements: #('e5','e6').
+	self assertCollection: pawn legalTargetSquares hasSameElements: (#(e5 e6) collect: [:name|board at: name ]).
 	"do one move"
-	pawn moveTo: 'e5'.
+	pawn moveTo: (board at: 'e5').
 	"Check now you can only do 1 square move"
-	self assertCollection: pawn legalTargetSquares hasSameElements: #('e6')
+	self assertCollection: pawn legalTargetSquares hasSameElements: (#(e6)collect: [:name|board at: name ]) .
 ]
 
 { #category : 'tests' }
