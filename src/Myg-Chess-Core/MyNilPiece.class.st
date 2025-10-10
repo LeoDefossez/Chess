@@ -20,5 +20,5 @@ MyNilPiece >> canBeCapturedBy: aColor [
 
 { #category : 'rendering' }
 MyNilPiece >> renderPieceOn: aMyChessSquare [ 
-	^ self
+	^ aMyChessSquare renderNilPiece: self
 ]
