@@ -13,7 +13,7 @@ Class {
 MyPiece class >> black [
 
 	^ self new
-		  color: Color black;
+		  color: MyChessBlack;
 		  yourself
 ]
 
@@ -21,7 +21,7 @@ MyPiece class >> black [
 MyPiece class >> white [
 
 	^ self new
-		  color: Color white;
+		  color: MyChessWhite;
 		  yourself
 ]
 
