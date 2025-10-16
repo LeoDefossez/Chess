@@ -92,10 +92,7 @@ MyChessSquare >> contents: aPiece [
 	contents := aPiece.
 
 	text := contents
-		        ifNil: [
-			        color isBlack
-				        ifFalse: [ 'z' ]
-				        ifTrue: [ 'x' ] ]
+		        ifNil: [ self renderNil ]
 		        ifNotNil: [ contents renderPieceOn: self ].
 	piece text: (text asRopedText
 			 fontSize: 48;
@@ -228,7 +225,10 @@ MyChessSquare >> renderKing: aPiece [
 
 { #category : 'rendering' }
 MyChessSquare >> renderKnight: aPiece [
-
+	self flag:#TODO "Point d'entrer pour dispatch".
+	"
+	^ (rendering renderKnight: aPiece on: self)
+	"
 	^ aPiece isWhite
 		  ifFalse: [ color isBlack
 				  ifFalse: [ 'M' ]
@@ -237,6 +237,14 @@ MyChessSquare >> renderKnight: aPiece [
 			  color isBlack
 				  ifFalse: [ 'N' ]
 				  ifTrue: [ 'n' ] ]
+]
+
+{ #category : 'as yet unclassified' }
+MyChessSquare >> renderNil [
+
+	^ color isBlack
+		  ifFalse: [ 'z' ]
+		  ifTrue: [ 'x' ]
 ]
 
 { #category : 'rendering' }
