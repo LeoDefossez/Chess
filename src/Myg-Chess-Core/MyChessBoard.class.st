@@ -8,7 +8,8 @@ Class {
 		'state',
 		'whiteColor',
 		'blackColor',
-		'game'
+		'game',
+		'rendering'
 	],
 	#category : 'Myg-Chess-Core',
 	#package : 'Myg-Chess-Core'
@@ -85,6 +86,11 @@ MyChessBoard >> game: aGame [
 	game := aGame
 ]
 
+{ #category : 'as yet unclassified' }
+MyChessBoard >> grid [
+	^ grid
+]
+
 { #category : 'highlighting' }
 MyChessBoard >> highLightTargets: squares [
 
@@ -109,9 +115,10 @@ MyChessBoard >> initialize [
 			 rowCount: 8;
 			 yourself).
 	self constraintsDo: [ :aLayoutConstraints |
-		aLayoutConstraints horizontal fitContent.
-		aLayoutConstraints vertical fitContent ].
+			aLayoutConstraints horizontal fitContent.
+			aLayoutConstraints vertical fitContent ].
 
+	rendering := MyChessBasicRendering new.
 	self initializeSquares
 ]
 
@@ -132,89 +139,37 @@ MyChessBoard >> initializeFromFENBoard: aFENBoard [
 ]
 
 { #category : 'initialization' }
-MyChessBoard >> initializePieces [
-
-	| black |
-	black := false.
-	$a asciiValue to: $h asciiValue do: [ :column |
-		8 to: 1 by: -1 do: [ :file |
-			| squareNotation square |
-			squareNotation := column asCharacter asString , file asString.
-			square := black
-				          ifTrue: [
-					          black := false.
-					          MyChessSquare basicNew
-						          color: Color black;
-						          board: self;
-						          initialize;
-						          yourself ]
-				          ifFalse: [
-					          black := true.
-					          MyChessSquare basicNew
-						          color: Color white;
-						          board: self;
-						          initialize;
-						          yourself ].
-			square name: squareNotation.
-			grid at: squareNotation put: square.
-			self addChild: square ].
-		black := black not ].
-
-	self at: 'a1' put: MyRook white.
-	self at: 'b1' put: MyKnight white.
-	self at: 'c1' put: MyBishop white.
-	self at: 'd1' put: MyQueen white.
-	self at: 'e1' put: MyKing white.
-	self at: 'f1' put: MyBishop white.
-	self at: 'g1' put: MyKnight white.
-	self at: 'h1' put: MyRook white.
-
-	$a asciiValue to: $h asciiValue do: [ :column |
-		self at: column asCharacter asString , '2' put: MyPawn white ].
-
-	self at: 'a8' put: MyRook black.
-	self at: 'b8' put: MyKnight black.
-	self at: 'c8' put: MyBishop black.
-	self at: 'd8' put: MyQueen black.
-	self at: 'e8' put: MyKing black.
-	self at: 'f8' put: MyBishop black.
-	self at: 'g8' put: MyKnight black.
-	self at: 'h8' put: MyRook black.
-
-	$a asciiValue to: $h asciiValue do: [ :column |
-		self at: column asCharacter asString , '7' put: MyPawn black ]
-]
-
-{ #category : 'initialization' }
 MyChessBoard >> initializeSquares [
 
 	| black |
 	black := false.
 	$a asciiValue to: $h asciiValue do: [ :column |
-		8 to: 1 by: -1 do: [ :file |
-			| squareNotation square |
-			squareNotation := column asCharacter asString , file asString.
-			square := black
-				          ifTrue: [
-					          black := false.
-					          MyChessSquare basicNew
-						          color: Color black;
-						          board: self;
-						          initialize;
-						          contents: nil;
-						          yourself ]
-				          ifFalse: [
-					          black := true.
-					          MyChessSquare basicNew
-						          color: Color white;
-						          board: self;
-						          initialize;
-						          contents: nil;
-						          yourself ].
-			square name: squareNotation.
-			grid at: squareNotation put: square.
-			self addChild: square ].
-		black := black not ]
+			8 to: 1 by: -1 do: [ :file |
+					| squareNotation square |
+					squareNotation := column asCharacter asString , file asString.
+					square := black
+						          ifTrue: [
+								          black := false.
+								          MyChessSquare basicNew
+									          color: Color black;
+									          board: self;
+									          initialize;
+									          rendering: rendering;
+									          contents: nil;
+									          yourself ]
+						          ifFalse: [
+								          black := true.
+								          MyChessSquare basicNew
+									          color: Color white;
+									          board: self;
+									          initialize;
+									          rendering: rendering;
+									          contents: nil;
+									          yourself ].
+					square name: squareNotation.
+					grid at: squareNotation put: square.
+					self addChild: square ].
+			black := black not ]
 ]
 
 { #category : 'accessing' }

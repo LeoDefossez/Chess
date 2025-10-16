@@ -165,9 +165,7 @@ MyChessSquare >> initialize [
 		background: Color white;
 		geometry: BlSquareGeometry new.
 
-	self addEventHandlerOn: BlClickEvent do: [ :e | self click ].
-
-	rendering := MyChessBasicRendering new
+	self addEventHandlerOn: BlClickEvent do: [ :e | self click ]
 ]
 
 { #category : 'accessing' }
@@ -237,6 +235,16 @@ MyChessSquare >> renderQueen: aPiece [
 MyChessSquare >> renderRook: aPiece [
 
 	^ rendering renderRook: aPiece on: self
+]
+
+{ #category : 'as yet unclassified' }
+MyChessSquare >> rendering [
+	^ rendering
+]
+
+{ #category : 'as yet unclassified' }
+MyChessSquare >> rendering: aMyChessBasicRendering [ 
+	rendering := aMyChessBasicRendering
 ]
 
 { #category : 'accessing' }

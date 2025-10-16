@@ -4,77 +4,85 @@ A MyChessSquareTest is a test class for testing the behavior of MyChessSquare
 Class {
 	#name : 'MyChessSquareTest',
 	#superclass : 'TestCase',
+	#instVars : [
+		'blackSquare',
+		'whiteSquare'
+	],
 	#category : 'Myg-Chess-Tests',
 	#package : 'Myg-Chess-Tests'
 }
 
 { #category : 'running' }
 MyChessSquareTest >> setUp [
+
+	| rendering |
 	super setUp.
-
+	rendering := MyChessBasicRendering new.
+	blackSquare := MyChessSquare black rendering: rendering.
+	whiteSquare := MyChessSquare white rendering: rendering
 ]
 
 { #category : 'tests' }
-MyChessSquareTest >> testRenderBishop [
+MyChessSquareTest >> testBasicRenderBishop [
 
-	self assert: (MyChessSquare black renderBishop: MyBishop black) equals: 'v'.
-	self assert: (MyChessSquare black renderBishop: MyBishop white) equals: 'b'.
-	self assert: (MyChessSquare white renderBishop: MyBishop black) equals: 'V'.
-	self assert: (MyChessSquare white renderBishop: MyBishop white) equals: 'B'.
+	self assert: (blackSquare renderBishop: MyBishop black) equals: 'v'.
+	self assert: (blackSquare renderBishop: MyBishop white) equals: 'b'.
+	self assert: (whiteSquare renderBishop: MyBishop black) equals: 'V'.
+	self assert: (whiteSquare renderBishop: MyBishop white) equals: 'B'
 ]
 
 { #category : 'tests' }
-MyChessSquareTest >> testRenderKing [
+MyChessSquareTest >> testBasicRenderKing [
 
-	self assert: (MyChessSquare black renderKing: MyKing black) equals: 'l'.
-	self assert: (MyChessSquare black renderKing: MyKing white) equals: 'k'.
-	self assert: (MyChessSquare white renderKing: MyKing black) equals: 'L'.
-	self assert: (MyChessSquare white renderKing: MyKing white) equals: 'K'.
+	self assert: (blackSquare renderKing: MyKing black) equals: 'l'.
+	self assert: (blackSquare renderKing: MyKing white) equals: 'k'.
+	self assert: (whiteSquare renderKing: MyKing black) equals: 'L'.
+	self assert: (whiteSquare renderKing: MyKing white) equals: 'K'.
 ]
 
 { #category : 'tests' }
-MyChessSquareTest >> testRenderKnight [
+MyChessSquareTest >> testBasicRenderKnight [
  
-	self assert: (MyChessSquare black renderKnight: MyKnight black) equals: 'm'.
-	self assert: (MyChessSquare black renderKnight: MyKnight white) equals: 'n'.
-	self assert: (MyChessSquare white renderKnight: MyKnight black) equals: 'M'.
-	self assert: (MyChessSquare white renderKnight: MyKnight white) equals: 'N'.
+	self assert: (blackSquare renderKnight: MyKnight black) equals: 'm'.
+	self assert: (blackSquare renderKnight: MyKnight white) equals: 'n'.
+	self assert: (whiteSquare renderKnight: MyKnight black) equals: 'M'.
+	self assert: (whiteSquare renderKnight: MyKnight white) equals: 'N'.
 	
 	
 ]
 
 { #category : 'tests' }
-MyChessSquareTest >> testRenderNil [
+MyChessSquareTest >> testBasicRenderNil [
 
-	self assert: (MyChessSquare black renderNil) equals: 'x'.
-	self assert: (MyChessSquare white renderNil) equals: 'z'
+	self assert: (blackSquare renderNil) equals: 'x'.
+	self assert: (whiteSquare renderNil) equals: 'z'
 ]
 
 { #category : 'tests' }
-MyChessSquareTest >> testRenderPawn [
+MyChessSquareTest >> testBasicRenderPawn [
  
-	self assert: (MyChessSquare black renderPawn: MyPawn black) equals: 'o'.
-	self assert: (MyChessSquare black renderPawn: MyPawn white) equals: 'p'.
-	self assert: (MyChessSquare white renderPawn: MyPawn black) equals: 'O'.
-	self assert: (MyChessSquare white renderPawn: MyPawn white) equals: 'P'.
+	self assert: (blackSquare renderPawn: MyPawn black) equals: 'o'.
+	self assert: (blackSquare renderPawn: MyPawn white) equals: 'p'.
+	self assert: (whiteSquare renderPawn: MyPawn black) equals: 'O'.
+	self assert: (whiteSquare renderPawn: MyPawn white) equals: 'P'.
 	
 	
 ]
 
 { #category : 'tests' }
-MyChessSquareTest >> testRenderQueen [
+MyChessSquareTest >> testBasicRenderQueen [
 
-	self assert: (MyChessSquare black renderQueen: MyQueen black) equals: 'w'.
-	self assert: (MyChessSquare black renderQueen: MyQueen white) equals: 'q'.
-	self assert: (MyChessSquare white renderQueen: MyQueen black) equals: 'W'.
-	self assert: (MyChessSquare white renderQueen: MyQueen white) equals: 'Q'
+	self assert: (blackSquare renderQueen: MyQueen black) equals: 'w'.
+	self assert: (blackSquare renderQueen: MyQueen white) equals: 'q'.
+	self assert: (whiteSquare renderQueen: MyQueen black) equals: 'W'.
+	self assert: (whiteSquare renderQueen: MyQueen white) equals: 'Q'
 ]
 
 { #category : 'tests' }
-MyChessSquareTest >> testRenderRook [
+MyChessSquareTest >> testBasicRenderRook [
 
-	self assert: (MyChessSquare black renderRook: MyRook black) equals: 't'.
-	self assert: (MyChessSquare black renderRook: MyRook white) equals: 'r'.
-	self assert: (MyChessSquare white renderRook: MyRook black) equals: 'T'.
-	self assert: (MyChessSquare white renderRook: MyRook white) equals: 'R'
+	self assert: (blackSquare renderRook: MyRook black) equals: 't'.
+	self assert: (blackSquare renderRook: MyRook white) equals: 'r'.
+	self assert: (whiteSquare renderRook: MyRook black) equals: 'T'.
+	self assert: (whiteSquare renderRook: MyRook white) equals: 'R'
 ]
