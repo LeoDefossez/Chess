@@ -1,3 +1,20 @@
+"
+My responsibility is to represent a chess square.
+I'm principaly used by MyChessBoard.
+
+### Importants variables
+| Variable   | Description |
+|-------------|-------------|
+| color      | Black or white |
+| name       | The name of the square (Bottom left will be 'a1', top right will be 'h8') |
+| contents   | The piece on the square (nil if no piece is on the square) |
+| rendering  | Decide how the square and pieces should be rendered |
+
+### Notes
+A square rendering is defined by its board.
+Meaning that when initialized without a board, putting a piece will throw an Error if no rendering has be defined
+
+"
 Class {
 	#name : 'MyChessSquare',
 	#superclass : 'BlElement',
