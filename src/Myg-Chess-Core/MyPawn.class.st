@@ -26,6 +26,20 @@ MyPawn class >> white [
 	^ MyPawnWhite new
 ]
 
+{ #category : 'as yet unclassified' }
+MyPawn >> getDiagonalTarget [
+	|nextMove col|
+	nextMove := self nextMoveAhead.
+	col:= OrderedCollection new.
+	nextMove notNil ifTrue: [ 
+				col add: nextMove right.
+				col add: nextMove left.	].
+	^ col select: [ :s |
+		  s notNil and:[
+			  s hasPiece]]
+	
+]
+
 { #category : 'accessing' }
 MyPawn >> id [
 
@@ -78,9 +92,8 @@ MyPawn >> targetSquaresLegal: aBoolean [
 	col:= OrderedCollection new.
 	nextSquare:= self nextMoveAhead.
 	
-	col add: nextSquare .
-		self isFirstMove ifTrue:[ nextSquare hasPiece ifFalse:[ col add: (self nextMoveAhead: nextSquare ) ]].
-		^col select: [ :s |
-		  s notNil and: [
-			  s hasPiece not]]
+	nextSquare notNil ifTrue: [ nextSquare hasPiece ifTrue: [col  add: nextSquare.]].
+	col addAll: self getDiagonalTarget.
+	self isFirstMove ifTrue:[ nextSquare hasPiece ifFalse:[ col add: (self nextMoveAhead: nextSquare ) ]].
+		
 ]
