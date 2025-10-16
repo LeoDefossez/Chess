@@ -200,30 +200,13 @@ MyChessSquare >> printOn: aStream [
 
 { #category : 'rendering' }
 MyChessSquare >> renderBishop: aPiece [
-
-	^ aPiece isWhite
-		  ifTrue: [
-			  color isBlack
-				  ifFalse: [ 'B' ]
-				  ifTrue: [ 'b' ] ]
-		  ifFalse: [
-			  color isBlack
-				  ifFalse: [ 'V' ]
-				  ifTrue: [ 'v' ] ]
+	^ rendering renderBishop: aPiece on: self.
 ]
 
 { #category : 'rendering' }
 MyChessSquare >> renderKing: aPiece [
-
-	^ aPiece isWhite
-		  ifFalse: [
-			  color isBlack
-				  ifFalse: [ 'L' ]
-				  ifTrue: [ 'l' ] ]
-		  ifTrue: [
-			  color isBlack
-				  ifFalse: [ 'K' ]
-				  ifTrue: [ 'k' ] ]
+	^ rendering renderKing: aPiece on: self.
+	
 ]
 
 { #category : 'rendering' }
@@ -235,51 +218,25 @@ MyChessSquare >> renderKnight: aPiece [
 { #category : 'as yet unclassified' }
 MyChessSquare >> renderNil [
 
-	^ color isBlack
-		  ifFalse: [ 'z' ]
-		  ifTrue: [ 'x' ]
+	^ rendering renderNilOn: self
 ]
 
 { #category : 'rendering' }
 MyChessSquare >> renderPawn: aPiece [
 
-	^ aPiece isWhite
-		  ifFalse: [
-			  color isBlack
-				  ifFalse: [ 'O' ]
-				  ifTrue: [ 'o' ] ]
-		  ifTrue: [
-			  color isBlack
-				  ifFalse: [ 'P' ]
-				  ifTrue: [ 'p' ] ]
+	^ rendering renderPawn: aPiece on: self
 ]
 
 { #category : 'rendering' }
 MyChessSquare >> renderQueen: aPiece [
 
-	^ aPiece isWhite
-		  ifFalse: [
-			  color isBlack
-				  ifFalse: [ 'W' ]
-				  ifTrue: [ 'w' ] ]
-		  ifTrue: [
-			  color isBlack
-				  ifFalse: [ 'Q' ]
-				  ifTrue: [ 'q' ] ]
+	^ rendering renderQueen: aPiece on: self
 ]
 
 { #category : 'rendering' }
 MyChessSquare >> renderRook: aPiece [
 
-	^ aPiece isWhite
-		  ifFalse: [
-			  color isBlack
-				  ifFalse: [ 'T' ]
-				  ifTrue: [ 't' ] ]
-		  ifTrue: [
-			  color isBlack
-				  ifFalse: [ 'R' ]
-				  ifTrue: [ 'r' ] ]
+	^ rendering renderRook: aPiece on: self
 ]
 
 { #category : 'accessing' }
