@@ -8,7 +8,8 @@ Class {
 		'piece',
 		'contents',
 		'board',
-		'target'
+		'target',
+		'rendering'
 	],
 	#category : 'Myg-Chess-Core',
 	#package : 'Myg-Chess-Core'
@@ -143,8 +144,8 @@ MyChessSquare >> initialize [
 
 	super initialize.
 	target := BlElement new
-		  geometry: BlCircleGeometry new;
-		  background: (Color gray alpha: 0.3).
+		          geometry: BlCircleGeometry new;
+		          background: (Color gray alpha: 0.3).
 
 	self layout: BlFrameLayout new.
 
@@ -154,8 +155,8 @@ MyChessSquare >> initialize [
 	piece := BlTextElement new.
 	piece text: '' asRopedText.
 	piece constraintsDo: [ :c |
-		c frame horizontal alignCenter.
-		c frame vertical alignCenter ].
+			c frame horizontal alignCenter.
+			c frame vertical alignCenter ].
 
 	self
 		addChild: label;
@@ -164,7 +165,9 @@ MyChessSquare >> initialize [
 		background: Color white;
 		geometry: BlSquareGeometry new.
 
-	self addEventHandlerOn: BlClickEvent do: [ :e | self click ]
+	self addEventHandlerOn: BlClickEvent do: [ :e | self click ].
+
+	rendering := MyChessBasicRendering new
 ]
 
 { #category : 'accessing' }
@@ -225,18 +228,8 @@ MyChessSquare >> renderKing: aPiece [
 
 { #category : 'rendering' }
 MyChessSquare >> renderKnight: aPiece [
-	self flag:#TODO "Point d'entrer pour dispatch".
-	"
-	^ (rendering renderKnight: aPiece on: self)
-	"
-	^ aPiece isWhite
-		  ifFalse: [ color isBlack
-				  ifFalse: [ 'M' ]
-				  ifTrue: [ 'm' ] ]
-		  ifTrue: [
-			  color isBlack
-				  ifFalse: [ 'N' ]
-				  ifTrue: [ 'n' ] ]
+
+	^ rendering renderKnight: aPiece on: self
 ]
 
 { #category : 'as yet unclassified' }
