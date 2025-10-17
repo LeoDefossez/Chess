@@ -6,6 +6,20 @@ Class {
 }
 
 { #category : 'tests' }
+MyPawnTest >> testPawnCanDoEnPassantMove [
+	"This test should check that if a pawn is in front of an other pawn in cannot eat him"
+
+	| pawnBlack pawnWhite board |
+	board := MyChessBoard empty.
+	board at: 'd7' put: (pawnBlack := MyPawn black).
+	pawnBlack moveTo: (board at: 'd5').
+	"Put an atacker pawn in front of our pawn (r u ready for a fight ? No)"
+	board at: 'e5' put: (pawnWhite := MyPawn white).
+	self assert:
+		((pawnWhite legalTargetSquares collect: #name) includes: 'd4')
+]
+
+{ #category : 'tests' }
 MyPawnTest >> testPawnCanEatInDiagonal [
 	"This test should check that if a pawn is in front of an other pawn in cannot eat him"
 
