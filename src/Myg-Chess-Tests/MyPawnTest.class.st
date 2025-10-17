@@ -122,3 +122,18 @@ MyPawnTest >> testPawnShouldNotThrowExceptionIfADiagonalSquareIsEmpty [
 	"Put an atacker pawn in front of our pawn (r u ready for a fight ? No)"
 	pawn legalTargetSquares.
 ]
+
+{ #category : 'tests' }
+MyPawnTest >> testWhenEnPassantMoveTheEnnemiePawnNeedToDisapear [
+	"This test should check that if a pawn is in front of an other pawn in cannot eat him"
+
+	| pawnBlack pawnWhite board |
+	board := MyChessBoard empty.
+	board at: 'd7' put: (pawnBlack := MyPawn black).
+	pawnBlack moveTo: (board at: 'd5').
+	"Put an atacker pawn in front of our pawn (r u ready for a fight ? No)"
+	board at: 'e4' put: (pawnWhite := MyPawn white).
+	pawnWhite moveTo: (board at: 'e5').
+	pawnWhite moveTo: (board at: 'd6').
+	self assert: (board at: 'd5') hasPiece not
+]
