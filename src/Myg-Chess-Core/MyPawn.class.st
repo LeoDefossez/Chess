@@ -56,11 +56,9 @@ MyPawn >> getEnPassantTarget [
 			add: self square right;
 			add: self square left;
 			yourself.
-			self halt.
 	col:=(col select: [ :s |
 		  s notNil and:[
 			  s hasPiece and:[ s contents color ~= self color and: s contents canBeEatEnPassant ]]]) collect: [ :s|self nextMoveAhead:s ].
-	
 	^col
 	
 	

@@ -14,9 +14,11 @@ MyPawnTest >> testPawnCanDoEnPassantMove [
 	board at: 'd7' put: (pawnBlack := MyPawn black).
 	pawnBlack moveTo: (board at: 'd5').
 	"Put an atacker pawn in front of our pawn (r u ready for a fight ? No)"
-	board at: 'e5' put: (pawnWhite := MyPawn white).
+	board at: 'e4' put: (pawnWhite := MyPawn white).
+	pawnWhite moveTo: (board at:'e5').
+	pawnWhite legalTargetSquares.
 	self assert:
-		((pawnWhite legalTargetSquares collect: #name) includes: 'd4')
+		((pawnWhite legalTargetSquares collect: #name) includes: 'd6')
 ]
 
 { #category : 'tests' }
