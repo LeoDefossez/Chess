@@ -36,7 +36,7 @@ MyPawn >> getDiagonalTarget [
 				col add: nextMove left.	].
 	^ col select: [ :s |
 		  s notNil and:[
-			  s hasPiece]]
+			  s hasPiece and:[ s contents color ~= self color ]]]
 	
 ]
 
