@@ -2,7 +2,11 @@ Class {
 	#name : 'MyPawn',
 	#superclass : 'MyPiece',
 	#instVars : [
-		'isFirstMove'
+		'isFirstMove',
+		'canBeEatEnPassant'
+	],
+	#classInstVars : [
+		'canBeEatEnPassant'
 	],
 	#category : 'Myg-Chess-Core',
 	#package : 'Myg-Chess-Core'
@@ -24,6 +28,11 @@ MyPawn class >> white [
 	"scope: class-variables  &  class-instance-variables"
 
 	^ MyPawnWhite new
+]
+
+{ #category : 'accessing' }
+MyPawn >> canBeEatEnPassant [
+	^ canBeEatEnPassant 
 ]
 
 { #category : 'as yet unclassified' }
@@ -59,7 +68,7 @@ MyPawn >> isFirstMove [
 
 { #category : 'path commands' }
 MyPawn >> moveTo: aSquare [
-
+	canBeEatEnPassant:=(self nextMoveAhead: (self nextMoveAhead) )equals: aSquare.
 	super moveTo: aSquare.
 	isFirstMove := false
 ]
