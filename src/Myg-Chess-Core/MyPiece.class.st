@@ -37,6 +37,11 @@ MyPiece >> board [
 	^ square board
 ]
 
+{ #category : 'testing' }
+MyPiece >> canBeEatEnPassant [
+	^ false. 
+]
+
 { #category : 'rendering' }
 MyPiece >> collectSquares: aBlock [
 

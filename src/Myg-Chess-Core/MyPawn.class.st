@@ -49,6 +49,23 @@ MyPawn >> getDiagonalTarget [
 	
 ]
 
+{ #category : 'as yet unclassified' }
+MyPawn >> getEnPassantTarget [
+	|col|
+	col:= OrderedCollection new
+			add: self square right;
+			add: self square left;
+			yourself.
+			self halt.
+	col:=(col select: [ :s |
+		  s notNil and:[
+			  s hasPiece and:[ s contents color ~= self color and: s contents canBeEatEnPassant ]]]) collect: [ :s|self nextMoveAhead:s ].
+	
+	^col
+	
+	
+]
+
 { #category : 'accessing' }
 MyPawn >> id [
 
@@ -68,7 +85,7 @@ MyPawn >> isFirstMove [
 
 { #category : 'path commands' }
 MyPawn >> moveTo: aSquare [
-	canBeEatEnPassant:=(self nextMoveAhead: (self nextMoveAhead) )equals: aSquare.
+	canBeEatEnPassant := (self nextMoveAhead: self nextMoveAhead) == aSquare.
 	super moveTo: aSquare.
 	isFirstMove := false
 ]
@@ -104,7 +121,8 @@ MyPawn >> targetSquaresLegal: aBoolean [
 
 	nextSquare notNil ifTrue: [
 		nextSquare hasPiece ifFalse: [ col add: nextSquare ] ].
-	col addAll: self getDiagonalTarget.
+	col addAll: self getDiagonalTarget;
+		addAll:self getEnPassantTarget.
 	self isFirstMove ifTrue: [
 			nextSquare hasPiece ifFalse: [
 				col add: (self nextMoveAhead: nextSquare) ] ].
