@@ -88,12 +88,16 @@ MyPawn >> renderPieceOn: aSquare [
 
 { #category : 'rendering' }
 MyPawn >> targetSquaresLegal: aBoolean [
-	|col nextSquare |
-	col:= OrderedCollection new.
-	nextSquare:= self nextMoveAhead.
-	
-	nextSquare notNil ifTrue: [ nextSquare hasPiece ifTrue: [col  add: nextSquare.]].
+
+	| col nextSquare |
+	col := OrderedCollection new.
+	nextSquare := self nextMoveAhead.
+
+	nextSquare notNil ifTrue: [
+		nextSquare hasPiece ifFalse: [ col add: nextSquare ] ].
 	col addAll: self getDiagonalTarget.
-	self isFirstMove ifTrue:[ nextSquare hasPiece ifFalse:[ col add: (self nextMoveAhead: nextSquare ) ]].
-		
+	self isFirstMove ifTrue: [
+			nextSquare hasPiece ifFalse: [
+				col add: (self nextMoveAhead: nextSquare) ] ].
+	^ col
 ]
