@@ -95,3 +95,14 @@ MyPawnTest >> testPawnCouldNotEatInFrontOfHim [
 	self assert: (pawn legalTargetSquares isEmpty) 
 	
 ]
+
+{ #category : 'tests' }
+MyPawnTest >> testPawnShouldNotThrowExceptionIfADiagonalSquareIsEmpty [
+	"This test should check that if a pawn is in front of an other pawn in cannot eat him"
+
+	| pawn board |
+	board := MyChessBoard empty.
+	board at: 'a4' put: (pawn := MyPawn white).
+	"Put an atacker pawn in front of our pawn (r u ready for a fight ? No)"
+	pawn legalTargetSquares.
+]
