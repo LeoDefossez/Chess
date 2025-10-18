@@ -1,3 +1,15 @@
+"
+I define a basic rendering for chess pieces depending on the color of their square and their own color.
+
+Each variable named [..]Rendering follows the structure:
+    SquareColor → PieceColor → RenderCharacter
+
+For example, the variable `knightRendering` is a nested dictionary organized as:
+    knightRendering
+        at: Color black → (Dictionary mapping piece colors to characters for black squares)
+        at: Color white → (Dictionary mapping piece colors to characters for white squares)
+
+"
 Class {
 	#name : 'MyChessBasicRendering',
 	#superclass : 'Object',
