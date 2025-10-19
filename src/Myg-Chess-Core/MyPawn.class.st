@@ -83,8 +83,13 @@ MyPawn >> isFirstMove [
 
 { #category : 'path commands' }
 MyPawn >> moveTo: aSquare [
-	canBeEatEnPassant := (self nextMoveAhead: self nextMoveAhead) == aSquare.
+	|enemieSquareEnPassant|
+	(self getEnPassantTarget select: [ :s| s == aSquare ] )ifNotEmpty: [ enemieSquareEnPassant:= aSquare ].
+	canBeEatEnPassant := (self nextMoveAheadFromASquare: self nextMoveAhead) == aSquare.
 	super moveTo: aSquare.
+	enemieSquareEnPassant ifNotNil: [ 
+		(self nextMoveBackWardFromASquare: enemieSquareEnPassant) contents: nil.
+		 ].
 	isFirstMove := false
 ]
 
@@ -98,6 +103,14 @@ MyPawn >> nextMoveAhead [
 
 { #category : 'as yet unclassified' }
 MyPawn >> nextMoveAheadFromASquare:aSquare [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"
+
+	SubclassResponsibility.
+]
+
+{ #category : 'as yet unclassified' }
+MyPawn >> nextMoveBackWardFromASquare:aSquare [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"
 

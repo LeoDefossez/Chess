@@ -15,3 +15,11 @@ MyPawnWhite >> initialize [
 MyPawnWhite >> nextMoveAheadFromASquare:aSquare [
 	^ aSquare up.
 ]
+
+{ #category : 'as yet unclassified' }
+MyPawnWhite >> nextMoveBackWardFromASquare:aSquare [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"
+
+	^aSquare down.
+]
