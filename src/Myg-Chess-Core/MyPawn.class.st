@@ -58,7 +58,7 @@ MyPawn >> getEnPassantTarget [
 			yourself.
 	col:=(col select: [ :s |
 		  s notNil and:[
-			  s hasPiece and:[ s contents color ~= self color and: s contents canBeEatEnPassant ]]]) collect: [ :s|self nextMoveAhead:s ].
+			  s hasPiece and:[ s contents color ~= self color and: s contents canBeEatEnPassant ]]]) collect: [ :s|self nextMoveAheadFromASquare:s ].
 	^col
 	
 	
@@ -93,11 +93,11 @@ MyPawn >> nextMoveAhead [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"
 
-	^self nextMoveAhead: square 
+	^self nextMoveAheadFromASquare: square 
 ]
 
 { #category : 'as yet unclassified' }
-MyPawn >> nextMoveAhead:aSquare [
+MyPawn >> nextMoveAheadFromASquare:aSquare [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"
 
@@ -123,6 +123,6 @@ MyPawn >> targetSquaresLegal: aBoolean [
 		addAll:self getEnPassantTarget.
 	self isFirstMove ifTrue: [
 			nextSquare hasPiece ifFalse: [
-				col add: (self nextMoveAhead: nextSquare) ] ].
+				col add: (self nextMoveAheadFromASquare: nextSquare) ] ].
 	^ col
 ]

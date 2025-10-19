@@ -12,6 +12,6 @@ MyPawnWhite >> initialize [
 ]
 
 { #category : 'as yet unclassified' }
-MyPawnWhite >> nextMoveAhead:aSquare [
+MyPawnWhite >> nextMoveAheadFromASquare:aSquare [
 	^ aSquare up.
 ]
