@@ -83,14 +83,15 @@ MyPawn >> isFirstMove [
 
 { #category : 'path commands' }
 MyPawn >> moveTo: aSquare [
-	|enemieSquareEnPassant|
+	|enemieSquareEnPassant changePos|
+	changePos := (aSquare == self square )not.
 	(self getEnPassantTarget select: [ :s| s == aSquare ] )ifNotEmpty: [ enemieSquareEnPassant:= aSquare ].
 	canBeEatEnPassant := (self nextMoveAheadFromASquare: self nextMoveAhead) == aSquare and: isFirstMove.
 	super moveTo: aSquare.
 	enemieSquareEnPassant ifNotNil: [ 
 		(self nextMoveBackWardFromASquare: enemieSquareEnPassant) contents: nil.
 		 ].
-	isFirstMove := false
+	(self square == aSquare and:[changePos]) ifTrue: [  isFirstMove :=false]
 ]
 
 { #category : 'as yet unclassified' }
