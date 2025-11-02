@@ -72,7 +72,7 @@ MyPawn >> id [
 
 { #category : 'initialization' }
 MyPawn >> initialize [
-
+	canBeEatEnPassant := false.
 	isFirstMove := true
 ]
 
