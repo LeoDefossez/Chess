@@ -85,7 +85,7 @@ MyPawn >> isFirstMove [
 MyPawn >> moveTo: aSquare [
 	|enemieSquareEnPassant|
 	(self getEnPassantTarget select: [ :s| s == aSquare ] )ifNotEmpty: [ enemieSquareEnPassant:= aSquare ].
-	canBeEatEnPassant := (self nextMoveAheadFromASquare: self nextMoveAhead) == aSquare.
+	canBeEatEnPassant := (self nextMoveAheadFromASquare: self nextMoveAhead) == aSquare and: isFirstMove.
 	super moveTo: aSquare.
 	enemieSquareEnPassant ifNotNil: [ 
 		(self nextMoveBackWardFromASquare: enemieSquareEnPassant) contents: nil.
