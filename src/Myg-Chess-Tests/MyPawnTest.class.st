@@ -6,6 +6,20 @@ Class {
 }
 
 { #category : 'tests' }
+MyPawnTest >> testCanBeEatEnPassantCanOnlyAppendInFirstMove [
+"Ce test s'assure que lorsqu'un pion effectue un mouvement non autorisé n'affecte pas le statut du pion"
+	| pawn board |
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyPawn white).
+	"Check at first you can do 2 squares move"
+	"do one move"
+	pawn moveTo: (board at: 'e5').
+	pawn moveTo: (board at: 'e7').
+	"Check now you can only do 1 square move"
+	self assert: pawn canBeEatEnPassant not.
+]
+
+{ #category : 'tests' }
 MyPawnTest >> testPawnCanDoEnPassantMove [
 	"This test should check that if a pawn is in front of an other pawn in cannot eat him"
 
