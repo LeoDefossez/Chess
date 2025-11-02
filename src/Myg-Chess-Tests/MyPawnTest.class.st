@@ -82,8 +82,9 @@ MyPawnTest >> testPawnChangeHisFirstMoveStateToFalse [
 	board at: 'e4' put: (pawn := MyPawn white).
 	"Check at first you can do 2 squares move"
 	"do one move"
-	pawn moveTo: 'e5'.
+	pawn moveTo:  (board at: 'e5')..
 	"Check now you can only do 1 square move"
+	
 	self assert: pawn isFirstMove not.
 ]
 
@@ -98,6 +99,20 @@ MyPawnTest >> testPawnChangeHisFirstMoveStateToTrueIfIllegal [
 	pawn moveTo: (board at: 'e4').
 	"Check now you can only do 1 square move"
 	self assert: pawn isFirstMove.
+]
+
+{ #category : 'tests' }
+MyPawnTest >> testPawnCouldGoOneSquareInFront [
+	"This test should check that if a pawn is in front of an other pawn in cannot eat him"
+	| pawn board |
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyPawn white).
+
+	"Put an atacker pawn in front of our pawn (r u ready for a fight ? No)"
+	pawn moveTo: (board at: 'e5').
+	
+	self assert: (pawn square) equals: (board at: 'e5')
+	
 ]
 
 { #category : 'tests' }
